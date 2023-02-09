@@ -8,7 +8,16 @@ describe('template spec', () => {
   })
 })
 
+describe('load site with an input field and an search button', () => {
+  it('should load input field', () => {
+    cy.get('input#searchText').should('exist');
+  })
 
+  it('should load button', () => {
+    cy.get('button#search').contains('Sök').should('exist');
+  })
+
+});
 
 describe('add movie', () => {
 it("should add movie", ()=> {
@@ -26,3 +35,13 @@ describe('movie length', () => {
     cy.get("div>div").should("have.length", 10);
   })
   });
+
+  describe ("show error", ()=> {
+    it("should show error text when input field is empty", ()=> {
+    cy.get("button#search").click();
+    cy.get("p").contains("Inga sökresultat att visa").should("exist");
+    })
+  });
+
+
+describe ("")
